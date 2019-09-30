@@ -42,7 +42,7 @@ $(() => {
         window.createTable("studentsTbl", window.studConfig, window.studData);
         break;
       case "employee":
-        console.log("Employee");
+        window.createTable("studentsTbl", window.empConfig, window.empData);
         break;
 
       default:

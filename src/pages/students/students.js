@@ -1,7 +1,7 @@
-window.studConfig = [
+window.empConfig = [
   {
     title: "ID",
-    key: "studentID"
+    key: "employeeID"
   },
   {
     title: "Name",
@@ -10,30 +10,38 @@ window.studConfig = [
   {
     title: "Age",
     key: "age"
+  },
+  {
+    title: "Phone",
+    key: "phone"
   }
 ];
 
 // window.studConfig = ["ID", "Name", "Age"];
 
-window.studData = [
+window.empData = [
   {
-    studentID: 1,
+    employeeID: 1,
     name: "Aman",
-    age: "20"
+    age: "20",
+    phone:"9496143226"
   },
   {
-    studentID: 2,
-    name: "Amna",
-    age: "22"
+    employeeID: 1,
+    name: "Aman",
+    age: "20",
+    phone:"9496143226"
   },
   {
-    studentID: 3,
-    name: "Appu",
-    age: "15"
+    employeeID: 1,
+    name: "Aman",
+    age: "20",
+    phone:"9496143226"
   },
   {
-    studentID: 4,
-    name: "Minnu",
-    age: "10"
+    employeeID: 1,
+    name: "Aman",
+    age: "20",
+    phone:"9496143226"
   }
 ];

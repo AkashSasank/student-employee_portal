@@ -39,10 +39,13 @@ $(() => {
   setData = menu => {
     switch (menu) {
       case "students":
+        window.createForm("studForm",window.studConfig)
         window.createTable("studentsTbl", window.studConfig, window.studData);
+       
         break;
       case "employee":
-        window.createTable("studentsTbl", window.empConfig, window.empData);
+        window.createForm("empForm",window.empConfig)
+        window.createTable("employeeTbl", window.empConfig, window.empData);
         break;
 
       default:

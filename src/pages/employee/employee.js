@@ -1,40 +1,53 @@
-window.studConfig = [
-    {
-      title: "ID",
-      key: "studentID"
-    },
-    {
-      title: "Name",
-      key: "name"
-    },
-    {
-      title: "Age",
-      key: "age"
-    }
-  ];
-  
-  // window.studConfig = ["ID", "Name", "Age"];
-  
-  window.studData = [
-    {
-      studentID: 1,
-      name: "Aman",
-      age: "20"
-    },
-    {
-      studentID: 2,
-      name: "Amna",
-      age: "22"
-    },
-    {
-      studentID: 3,
-      name: "Appu",
-      age: "15"
-    },
-    {
-      studentID: 4,
-      name: "Minnu",
-      age: "10"
-    }
-  ];
-  
+window.empConfig = [
+  {
+    title: "ID",
+    key: "employeeID",
+    type:"number"
+  },
+  {
+    title: "Name",
+    key: "name",
+    type:"text"
+  },
+  {
+    title: "Age",
+    key: "age",
+    type:"number"
+  },
+  {
+    title: "Phone",
+    key: "phone",
+    type:"number"
+  }
+];
+
+// window.studConfig = ["ID", "Name", "Age"];
+
+// window.empData = [
+//   {
+//     employeeID: 1,
+//     name: "Aman",
+//     age: "20",
+//     phone:"9496143226"
+//   },
+//   {
+//     employeeID: 1,
+//     name: "Aman",
+//     age: "20",
+//     phone:"9496143226"
+//   },
+//   {
+//     employeeID: 1,
+//     name: "Aman",
+//     age: "20",
+//     phone:"9496143226"
+//   },
+//   {
+//     employeeID: 1,
+//     name: "Aman",
+//     age: "20",
+//     phone:"9496143226"
+//   }
+// ];
+
+window.empData = JSON.parse(localStorage.getItem("employeeData"));

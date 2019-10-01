@@ -24,3 +24,23 @@ li a {
 li a:hover{
   color: #333333;
 }
+
+button {
+	width: 50px;
+	height:25px;
+}
+.info{
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  color: #ffffff;
+  background-color: crimson;
+}
+footer{
+  /* position: absolute; */
+  position: fixed;
+  /* left: 0; */
+  bottom: 0;
+  width: 100%;
+  z-index: 5;
+}

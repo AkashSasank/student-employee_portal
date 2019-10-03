@@ -30,7 +30,7 @@ window.readForm = (config,entity,tableDiv) =>{
     switch(entity){
         case "studentData":
             window.studData = data;
-        case "studentData":
+        case "employeeData":
             window.empData = data;
     }
     localStorage.setItem(entity,JSON.stringify(data))

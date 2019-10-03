@@ -27,10 +27,15 @@ window.readForm = (config,entity,tableDiv) =>{
         data = [];
     }
     data.push(newData);
-    window.studData = data;
+    switch(entity){
+        case "studentData":
+            window.studData = data;
+        case "studentData":
+            window.empData = data;
+    }
     localStorage.setItem(entity,JSON.stringify(data))
     window.resetForm();
-    window.createTable(tableDiv,config, window.studData);
+    window.createTable(tableDiv,config,data);
 };
 
 

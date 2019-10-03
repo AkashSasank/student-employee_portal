@@ -41,16 +41,23 @@ $(() => {
       case "students":
         window.createForm("studForm",window.studConfig)
         window.createTable("studentsTbl", window.studConfig, window.studData);
+        window.config = window.studConfig;
+        window.tableDiv = "studentsTbl"
+        window.entity = 'studentData' 
        
         break;
       case "employee":
         window.createForm("empForm",window.empConfig)
         window.createTable("employeeTbl", window.empConfig, window.empData);
+        window.config = window.empConfig;
+        window.tableDiv = "employeeTbl"
+        window.entity = 'employeeData' 
         break;
 
       default:
         break;
     }
+    window.sortMode = 'ascending'
   };
 
   let selector, elems;

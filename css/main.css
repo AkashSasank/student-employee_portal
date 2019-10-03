@@ -24,7 +24,42 @@ li a {
 li a:hover{
   color: #333333;
 }
+td{
+  font-size: 1.5vw;
+  background-color: azure;
+  word-wrap: wrap break-word;
+  min-width: 100px;
+}
+th{
+  cursor: pointer;
+  min-width: 100px;
+  position: sticky;
+  background-color:#878799;
+  top: 0;
+  z-index: 5;
+}
+th h3{
+  font-size: 30px;
+}
+th:hover{
+  transition: 0.5s;
+  background-color: #5c5150;
+  color: #ffffff;
 
+}
+thead {
+  position: sticky;
+  /* position: sticky; */
+  top: 0;
+  z-index: 1;
+  /* background: #fff; */
+}
+.table-div{
+  height: 300px;
+  width: 100%;
+  overflow: auto;
+  border-radius: 25px
+}
 button {
 	width: 50px;
 	height:25px;

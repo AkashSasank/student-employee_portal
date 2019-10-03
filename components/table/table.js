@@ -15,6 +15,8 @@ $(() => {
         let th = document.createElement("th");
         th.width = "75";
         th.appendChild(document.createTextNode(value.title));
+        let i = document.createElement("i");
+        i.setAttribute("class",'glyphicon glyphicon-chevron-down')
         tr.appendChild(th);
       }
   

@@ -3,7 +3,7 @@ $(() => {
     console.log(data)
     if(data !== null){
       let myTableDiv = document.getElementById(tableDiv);
-      myTableDiv.innerHTML = ''
+      myTableDiv.innerHTML = ""
       let table = document.createElement("table");
       let tableBody = document.createElement("tbody");
       table.appendChild(tableBody);

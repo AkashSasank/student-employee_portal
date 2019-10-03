@@ -16,7 +16,7 @@ window.createForm = (formDiv,config)=>{
     formWindow.appendChild(form);
 };
 
-window.readForm = (config,entity) =>{
+window.readForm = (config,entity,tableDiv) =>{
     let newData = {}
     for(let [key,value] of Object.entries(config)){
         let input = document.getElementById(value.key)
@@ -27,8 +27,10 @@ window.readForm = (config,entity) =>{
         data = [];
     }
     data.push(newData);
+    window.studData = data;
     localStorage.setItem(entity,JSON.stringify(data))
     window.resetForm();
+    window.createTable(tableDiv,config, window.studData);
 };
 
 

@@ -55,9 +55,10 @@ th:hover{
 tr:nth-child(even){background-color: #f2f2f2;}
  td,th {
   border: 1px solid #ddd;
+  margin :2px
 }
 tr{
-  height: 35px;
+  height: 30px;
 }
 
 header{

@@ -1,8 +1,9 @@
 $(() => {
   window.createTable = (tableDiv, config, data) => {
-    console.log(data)
-    if(data !== null){
+    console.log(data.length)
+    if(data !== null || data.length>0){
       let myTableDiv = document.getElementById(tableDiv);
+      myTableDiv.style.display = ""
       myTableDiv.innerHTML = ""
       let table = document.createElement("table");
       let tableHead = document.createElement("thead")
@@ -15,7 +16,7 @@ $(() => {
       tableHead.appendChild(tr);
       for (let [key, value] of Object.entries(config)) {
         let th = document.createElement("th");
-        th.width = "75";
+        th.width = "80";
         th.appendChild(document.createTextNode(value.title));
         let i = document.createElement("i");
         switch(window.sortMode){
@@ -32,11 +33,10 @@ $(() => {
       
         th.appendChild(i);
         th.id = value.key
-        console.log(window.sortMode)
+        // console.log(window.sortMode)
         th.addEventListener("click",()=>{
           window.sortData(window.sortMode)
         })
-        // th.setAttribute("onclick","window.sortData('ascending')")
         tr.appendChild(th);
       }
       let th = document.createElement("th");
@@ -50,12 +50,15 @@ $(() => {
         for (const col in row) {
           let td = document.createElement("td");
           td.appendChild(document.createTextNode(row[col]));
+          if(!isNaN(row[col])||!isNaN(row[col].split("-")[0])){//text and number formatting
+            td.style.textAlign = "right";
+          }
           tr.appendChild(td);
         }
         //Add actions column
         let col =  document.createElement('td');
         let d = document.createElement("div");
-        d.setAttribute("class","modal-cont");
+        d.setAttribute("class","editButtons");
         let del = document.createElement("button");//delete button
         let edit = document.createElement("button");//edit button
         del.setAttribute("class","btn btn-danger");
@@ -64,15 +67,17 @@ $(() => {
         del.innerHTML = '<span class="glyphicon glyphicon-trash">';
         edit.onclick = function() {
           if(confirm("Do you wish to continue?")){
-              window.editTable(rowIdx,tableDiv,config,data);
-
-             
+              window.editTable(rowIdx,tableDiv,config,data);             
             }
         }            
         del.onclick = function() {
           if(confirm("Data will be lost forever!! Do you wish to continue? ")){
                 data = deleteRow(rowIdx,data);//sets window data object
                 window.createTable(tableDiv, config, data)
+                if(data.length ==0){
+                  let myTableDiv = document.getElementById(tableDiv);
+                  myTableDiv.style.display = "none"
+                }
               }
         }
         d.appendChild(edit);
@@ -93,7 +98,11 @@ $(() => {
         default:
             break;
     } 
-    };
+    }
+    // console.log(window.entity)
+    // if(localStorage.getItem(window.entity).length == 0){
+    //   document.getElementById(window.tableDiv).style.display = "none"
+    // }
     }
   
 window.editTable=(index,tableDiv,config,data)=>{
@@ -101,18 +110,42 @@ window.editTable=(index,tableDiv,config,data)=>{
   let newData = {}
   for(let [key,value] of Object.entries(config)){
       let input = document.getElementById(value.key)
-      console.log(value.key)
+      // console.log(value.key)
       input.value = currentRow[value.key] //sets the input values to that of selected row
   }
   let submit = document.getElementById("submitButton");
   submit.onclick =()=>{
     let buffer = []
+    let status =true;
+    let filteredData = data.filter((val,i)=> i!== index )
     for(let [key,value] of Object.entries(config)){
         let input = document.getElementById(value.key)
-        newData[value.key] = input.value
+        if(window.mandatoryFields.includes(value.title)){
+          if(input.value.length > 0){
+              newData[value.key] = input.value
+          }
+          else{
+              alert("Fill the mandatory fields")
+              status = false;
+              break;
+          }
+          }
+          if(window.uniqueFields.includes(value.title)  ){
+              status = window.isUnique(input.value,filteredData,value.key)
+              if(status){
+                  newData[value.key] = input.value
+              }
+              else{
+                  alert("Record already exists");
+                  break;
+              }
+         }
+         else{
+          newData[value.key] = input.value
+         }
         buffer.push(input.value)
     }
-    if(window.check(buffer)){
+    if(window.check(buffer) && status){
       data[index]=newData;
       window.createTable(tableDiv, config, data)
     }

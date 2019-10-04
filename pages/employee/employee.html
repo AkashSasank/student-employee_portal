@@ -1,11 +1,17 @@
-<div id="empForm"></div>
-<input type="button" onclick="window.readForm()" value="Submit" id = "submitButton">
-<input type="button" onclick="window.resetForm()" value="Reset" id = "reset">
-<div id="search-div">
-        <form class="form-inline my-2 my-lg-0 justify-right" id = "searchWindow" action="">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" onkeyup="window.searchTable()" >
-          </form>
-    </div>
+<div class="formDiv">
+        <div id="empForm"></div>
+        <div id="buttonsDiv">
+                <input type="button" onclick="window.readForm()" value="Submit" id = "submitButton">
+                <input type="button" onclick="window.resetForm()" value="Reset" id = "reset">
+        </div>
+        <div id="search-div">
+                <form class="form-inline my-2 my-lg-0 justify-right" id = "searchWindow" action="">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" onkeyup="window.searchTable()" >
+                  </form>
+            </div>
+</div>
+
 <div class="table-div">
-        <div id="employeeTbl">Employee</div>
+        <h1>Employee Portal</h1>
+        <div id="employeeTbl"></div>
 </div>

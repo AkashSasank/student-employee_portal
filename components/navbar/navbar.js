@@ -1,15 +1,15 @@
 $(() => {
   window.menu = [
     {
-      title: "home",
+      title: "Home",
       route: "home.html"
     },
     {
-      title: "students",
+      title: "Students",
       route: "students.html"
     },
     {
-      title: "employee",
+      title: "Employee",
       route: "employee.html"
     }
   ];
@@ -24,7 +24,7 @@ $(() => {
   };
 
   clickMenu = () => {
-    let menuStr = event.target.text;
+    let menuStr = event.target.text.toLowerCase();
     window.location.hash = "#" + menuStr;
     setContent(menuStr);
     createActiveMenu(menuStr);
@@ -44,6 +44,9 @@ $(() => {
         window.config = window.studConfig;
         window.tableDiv = "studentsTbl"
         window.entity = 'studentData' 
+        if(window.studData.length == 0){
+      document.getElementById("studentsTbl").style.display = "none"
+      } 
        
         break;
       case "employee":
@@ -52,12 +55,18 @@ $(() => {
         window.config = window.empConfig;
         window.tableDiv = "employeeTbl"
         window.entity = 'employeeData' 
+        if(window.empData.length == 0){
+          document.getElementById("employeeTbl").style.display = "none"
+          } 
         break;
 
       default:
         break;
     }
     window.sortMode = 'ascending'
+    // if(JSON.parse(localStorage.getItem(entity)).length == 0){
+    //   document.getElementById(tableDiv).style.display = "none"
+    // }   
   };
 
   let selector, elems;

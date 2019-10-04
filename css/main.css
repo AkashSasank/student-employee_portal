@@ -1,5 +1,8 @@
+body {
+  background-image: url("../assets/images/stud3.jpeg")
+}
 .active {
-  color: blue;
+  color:  #999999;
 }
 ul {
   list-style-type: none;
@@ -14,7 +17,7 @@ li {
 
 li a {
   display: block;
-  color: #999999;
+  color: #ffffff;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -22,10 +25,11 @@ li a {
   font-weight: bold;
 }
 li a:hover{
-  color: #333333;
+  color:  #999999;
+  text-decoration: none;
 }
 td{
-  font-size: 1.5vw;
+  font-size:15px;
   background-color: azure;
   word-wrap: wrap break-word;
   min-width: 100px;
@@ -33,13 +37,14 @@ td{
 th{
   cursor: pointer;
   min-width: 100px;
+  height: 40px;
   position: sticky;
   background-color:#878799;
   top: 0;
   z-index: 5;
-}
-th h3{
-  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 2px;
 }
 th:hover{
   transition: 0.5s;
@@ -47,21 +52,61 @@ th:hover{
   color: #ffffff;
 
 }
+tr:nth-child(even){background-color: #f2f2f2;}
+ td,th {
+  border: 1px solid #ddd;
+}
+tr{
+  height: 35px;
+}
+
+header{
+  display: flex;
+  background-color:#393434;
+}
+.logo{
+  max-width: 200px;
+}
+.logo:hover{
+  transform: scale(1.08);
+  transition: 0.5s;
+  cursor: pointer;
+ 
+}
 thead {
   position: sticky;
   /* position: sticky; */
   top: 0;
-  z-index: 1;
+  z-index: 4;
+  background-color:#ffffff;
   /* background: #fff; */
 }
 .table-div{
   height: 300px;
-  width: 100%;
+  width: 50%;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
 }
-button {
+
+h1{
+  color:black;
+  font-size: 60px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#formDiv button {
 	width: 50px;
 	height:25px;
+}
+.editButtons{
+  display: flex;
+}
+.editButtons button{
+  padding: 0% ;
+  height: 35px;
 }
 .info{
   display: flex;
@@ -77,4 +122,38 @@ footer{
   bottom: 0;
   width: 100%;
   z-index: 5;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+.formDiv{
+  width: 250px;
+  background-color: #968eec;
+  border-radius:10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px 20px 25px;
+}
+input {
+  width:200px;
+}
+#content{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+padding-top: 5%;
+}
+#buttonsDiv {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+#headerMenu{
+  padding-top: 20px;
+}
+#studentsTbl ,#employeeTbl {
+  display:flex;
+  justify-content: center
 }

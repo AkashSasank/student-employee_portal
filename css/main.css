@@ -28,6 +28,10 @@ li a:hover{
   color:  #999999;
   text-decoration: none;
 }
+li a:active{
+  color:  #999999;
+  text-decoration: none;
+}
 td{
   font-size:15px;
   background-color: azure;

@@ -1,6 +1,5 @@
 $(() => {
   window.createTable = (tableDiv, config, data) => {
-    console.log(data.length)
     if(data !== null || data.length>0){
       let myTableDiv = document.getElementById(tableDiv);
       myTableDiv.style.display = ""

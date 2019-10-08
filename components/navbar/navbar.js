@@ -37,6 +37,7 @@ $(() => {
   };
 
   setData = menu => {
+    console.log(menu)
     switch (menu) {
       case "students":
         window.createForm("studForm",window.studConfig)

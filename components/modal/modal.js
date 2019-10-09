@@ -80,8 +80,8 @@ window.readForm = () =>{
         }
         localStorage.setItem(entity,JSON.stringify(data))
         window.createTable(tableDiv,config,data);
+        window.resetForm();
     }
-    window.resetForm();
 
 };
 

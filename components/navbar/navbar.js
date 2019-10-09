@@ -76,7 +76,7 @@ $(() => {
     elems = document.querySelectorAll(selector);
     elems.forEach(elem => {
       elem.classList.remove("active");
-      elem.text == activeMenu ? elem.classList.add("active") : "";
+      elem.text.toLowerCase() == activeMenu ? elem.classList.add("active") : "";
     });
   };
 });

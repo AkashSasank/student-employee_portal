@@ -2,7 +2,7 @@ $(() => {
   //Load header
   $("#header").load("./components/header/header.html", () => {
     //Add menu to nav bar
-    let navMenuHtml = buildList(window.menu);
+    let navMenuHtml = window.buildList(window.menu);
     $("#headerMenu").html(navMenuHtml);
     setActiveInitial();
   });

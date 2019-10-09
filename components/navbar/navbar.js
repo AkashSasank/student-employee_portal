@@ -14,7 +14,7 @@ $(() => {
     }
   ];
 
-  buildList = data => {
+  window.buildList = data => {
     let html = "<ul>";
     for (item in data) {
       html += "<li><a onclick='clickMenu()'>" + data[item].title + "</a></li>";
@@ -41,24 +41,31 @@ $(() => {
     switch (menu) {
       case "students":
         window.createForm("studForm",window.studConfig)
-        window.createTable("studentsTbl", window.studConfig, window.studData);
+
         window.config = window.studConfig;
         window.tableDiv = "studentsTbl"
         window.entity = 'studentData' 
-        if(window.studData.length == 0){
+        if(window.studData == null||window.studData.length == 0){
       document.getElementById("studentsTbl").style.display = "none"
+      document.getElementById("search").style.display = "none"
       } 
+      else{
+        window.createTable("studentsTbl", window.studConfig, window.studData);
+      }
        
         break;
       case "employee":
         window.createForm("empForm",window.empConfig)
-        window.createTable("employeeTbl", window.empConfig, window.empData);
         window.config = window.empConfig;
         window.tableDiv = "employeeTbl"
         window.entity = 'employeeData' 
-        if(window.empData.length == 0){
+        if(window.empData == null || window.empData.length == 0 ){
           document.getElementById("employeeTbl").style.display = "none"
+          document.getElementById("search").style.display = "none"
           } 
+          else{
+            window.createTable("employeeTbl", window.empConfig, window.empData);
+          }
         break;
 
       default:

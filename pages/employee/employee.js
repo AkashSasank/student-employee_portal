@@ -26,6 +26,13 @@ window.empConfig = [
     type:"number",
     required:false,
     unique:true
+  },
+  {
+    title: "Email",
+    key: "email",
+    type:"email",
+    required:false,
+    unique:true
   }
 ];
 window.empData = JSON.parse(localStorage.getItem("employeeData"));

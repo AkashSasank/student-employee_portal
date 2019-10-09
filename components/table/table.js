@@ -3,6 +3,7 @@ $(() => {
     if(data !== null || data.length>0){
       let myTableDiv = document.getElementById(tableDiv);
       myTableDiv.style.display = ""
+      document.getElementById("search").style.display = ""
       myTableDiv.innerHTML = ""
       let table = document.createElement("table");
       let tableHead = document.createElement("thead")
@@ -76,6 +77,7 @@ $(() => {
                 if(data.length ==0){
                   let myTableDiv = document.getElementById(tableDiv);
                   myTableDiv.style.display = "none"
+                  document.getElementById("search").style.display = "none"
                 }
               }
         }
@@ -119,7 +121,7 @@ window.editTable=(index,tableDiv,config,data)=>{
     let filteredData = data.filter((val,i)=> i!== index )
     for(let [key,value] of Object.entries(config)){
         let input = document.getElementById(value.key)
-        if(window.mandatoryFields.includes(value.title)){
+        if(value.required){
           if(input.value.length > 0){
               newData[value.key] = input.value
           }
@@ -129,7 +131,7 @@ window.editTable=(index,tableDiv,config,data)=>{
               break;
           }
           }
-          if(window.uniqueFields.includes(value.title)  ){
+          if(value.unique){
               status = window.isUnique(input.value,filteredData,value.key)
               if(status){
                   newData[value.key] = input.value

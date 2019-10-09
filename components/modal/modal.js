@@ -8,7 +8,7 @@ window.createForm = (formDiv,config)=>{
         let label = document.createElement("label");
         input.type = value.type;
         input.id = value.key;
-        if(window.mandatoryFields.includes(value.title)){
+        if(value.required){
             input.required = true
         }
         label.for = value.key;
@@ -117,6 +117,4 @@ window.check=(myform)=>{//form validation
       return true;
       }
   }
-window.uniqueFields = ["ID"]
-window.mandatoryFields = ["ID","Name"]
 })

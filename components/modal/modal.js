@@ -31,7 +31,7 @@ window.readForm = () =>{
     let status = true;
     for(let [key,value] of Object.entries(config)){
         let input = document.getElementById(value.key)
-       if(window.mandatoryFields.includes(value.title)){
+       if(value.required){
         if(input.value.length > 0){
             newData[value.key] = input.value
         }
@@ -41,7 +41,7 @@ window.readForm = () =>{
             break;
         }
         }
-        if(window.uniqueFields.includes(value.title)  ){
+        if(value.unique){
             status = window.isUnique(input.value,data,value.key)
             if(status){
                 newData[value.key] = input.value

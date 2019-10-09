@@ -2,52 +2,30 @@ window.empConfig = [
   {
     title: "ID",
     key: "employeeID",
-    type:"number"
+    type:"number",
+    required:true,
+    unique:true
   },
   {
     title: "Name",
     key: "name",
-    type:"text"
+    type:"text",
+    required:true,
+    unique:false
   },
   {
     title: "Age",
     key: "age",
-    type:"number"
+    type:"number",
+    required:false,
+    unique:false
   },
   {
     title: "Phone",
     key: "phone",
-    type:"number"
+    type:"number",
+    required:false,
+    unique:true
   }
 ];
-
-// window.studConfig = ["ID", "Name", "Age"];
-
-// window.empData = [
-//   {
-//     employeeID: 1,
-//     name: "Aman",
-//     age: "20",
-//     phone:"9496143226"
-//   },
-//   {
-//     employeeID: 1,
-//     name: "Aman",
-//     age: "20",
-//     phone:"9496143226"
-//   },
-//   {
-//     employeeID: 1,
-//     name: "Aman",
-//     age: "20",
-//     phone:"9496143226"
-//   },
-//   {
-//     employeeID: 1,
-//     name: "Aman",
-//     age: "20",
-//     phone:"9496143226"
-//   }
-// ];
-
 window.empData = JSON.parse(localStorage.getItem("employeeData"));

@@ -7,12 +7,12 @@ window.createForm = (formDiv,config)=>{
         let input = document.createElement("input");
         let label = document.createElement("label");
         input.type = value.type;
-        input.id = value.key;
-        if(value.required){
-            input.required = true
-        }
+        input.id = value.key;  
         label.for = value.key;
         label.textContent = value.title;
+        if(value.required){
+            label.innerHTML = label.textContent +"<sup>*</sup>"
+        }
         form.appendChild(label)
         form.appendChild(input)
     }
@@ -50,7 +50,7 @@ window.readForm = () =>{
             break;
         }
         }
-        if(value.unique){
+        if(value.unique && inputText.length > 0){
             status = window.isUnique(inputText,data,value.key)
             if(status){
                 if(value.regex.test(inputText)){

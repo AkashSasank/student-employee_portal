@@ -35,7 +35,7 @@ window.empConfig = [
     title: "Email",
     key: "email",
     type:"email",
-    required:false,
+    required:true,
     unique:true,
     regex:/^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/
   }

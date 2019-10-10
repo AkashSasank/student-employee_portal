@@ -79,6 +79,9 @@ header{
   cursor: pointer;
  
 }
+label sup{
+  color: red;
+}
 thead {
   position: sticky;
   /* position: sticky; */

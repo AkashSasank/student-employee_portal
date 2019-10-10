@@ -59,7 +59,8 @@ th:hover{
 tr:nth-child(even){background-color: #f2f2f2;}
  td,th {
   border: 1px solid #ddd;
-  margin :2px
+  margin :2px;
+  padding: 10px;
 }
 tr{
   height: 30px;
@@ -87,7 +88,7 @@ thead {
   /* background: #fff; */
 }
 .table-div{
-  height: 300px;
+  /* height: 300px; */
   width: 50%;
   overflow: auto;
   display: flex;
@@ -161,5 +162,7 @@ padding-top: 5%;
 }
 #studentsTbl ,#employeeTbl {
   display:flex;
-  justify-content: center
+  justify-content: center;
+  height: 300px;
+  overflow: auto;
 }

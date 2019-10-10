@@ -5,21 +5,24 @@ window.studConfig = [
     key: "studentID",
     type:"number",
     required:true,
-    unique:true
+    unique:true,
+    regex:/^[0-9]*$/
   },
   {
     title: "Name",
     key: "name",
     type:"text",
     required:true,
-    unique:false
+    unique:false,
+    regex:/^[a-zA-Z\s]+$/
   },
   {
     title: "Age",
     key: "age",
     type:"number",
     required:false,
-    unique:false
+    unique:false,
+    regex:/^[0-9]*$/
   }
 ];
 

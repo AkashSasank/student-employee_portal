@@ -31,9 +31,18 @@ window.readForm = () =>{
     let status = true;
     for(let [key,value] of Object.entries(config)){
         let input = document.getElementById(value.key)
+        let inputText = input.value
        if(value.required){
-        if(input.value.length > 0){
-            newData[value.key] = input.value
+        if(inputText.length > 0){
+            if(value.regex.test(inputText)){
+                newData[value.key] = inputText
+            }
+            else{
+                alert("Enter a valid "+value.key)
+                status = false;
+            break;
+            }
+            
         }
         else{
             alert("Fill the mandatory fields")
@@ -42,9 +51,16 @@ window.readForm = () =>{
         }
         }
         if(value.unique){
-            status = window.isUnique(input.value,data,value.key)
+            status = window.isUnique(inputText,data,value.key)
             if(status){
-                newData[value.key] = input.value
+                if(value.regex.test(inputText)){
+                    newData[value.key] = inputText
+                }
+                else{
+                    alert("Enter a valid "+value.key)
+                    status = false;
+                break;
+                }
             }
             else{
                 alert("Record already exists");
@@ -52,11 +68,11 @@ window.readForm = () =>{
             }
        }
        else{
-        newData[value.key] = input.value
+        newData[value.key] = inputText
        }
-        buffer.push(input.value)
+        // buffer.push(inputText)//
     }
-    if(status && window.check(buffer)){
+    if(status ){
         switch(tableDiv){
             case "studentsTbl":
                 entity = 'studentData';
@@ -82,6 +98,7 @@ window.readForm = () =>{
         window.createTable(tableDiv,config,data);
         window.resetForm();
     }
+    $("#formDiv").load(location.href + " #formDiv");
 
 };
 

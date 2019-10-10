@@ -137,6 +137,7 @@ form{
 .formDiv{
   width: 250px;
   height: fit-content;
+  height: -moz-fit-content;
   background-color: #968eec;
   border-radius:10px;
   display: flex;

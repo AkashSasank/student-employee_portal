@@ -1,5 +1,11 @@
 body {
-  background-image: url("../assets/images/stud3.jpeg")
+  background-image: url("../assets/images/stud3.jpeg");
+  background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+html, body {
+  min-height: 100%;
 }
 .active {
   color:  #999999;
@@ -79,7 +85,7 @@ header{
   cursor: pointer;
  
 }
-label sup{
+sup{
   color: red;
 }
 thead {

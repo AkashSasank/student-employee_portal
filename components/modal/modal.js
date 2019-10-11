@@ -70,7 +70,6 @@ window.readForm = () =>{
        else{
         newData[value.key] = inputText
        }
-        // buffer.push(inputText)//
     }
     if(status ){
         switch(tableDiv){
@@ -113,8 +112,6 @@ window.resetForm = ()=>{
 window.isUnique=(value,data,field)=>{//check if an entry is unique, value - input, data - the entire table data, field - the input field
     let status =  true;
     data.forEach(val => {
-        // console.log(val[field])
-        // console.log(value)
       if(val[field] === value && val[field].length>0){
        status = status && false;
       }

@@ -28,11 +28,9 @@ $(() => {
             default:
               i.setAttribute("class",'glyphicon glyphicon-chevron-down');
               break;
-        }
-      
+        }   
         th.appendChild(i);
         th.id = value.key
-        // console.log(window.sortMode)
         th.addEventListener("click",()=>{
           window.sortData(window.sortMode)
         })
@@ -98,9 +96,8 @@ $(() => {
         default:
             break;
     } 
-    }
-    }
-  
+  }
+} 
 window.editTable=(index,tableDiv,config,data)=>{
   let currentRow = data[index]
   console.log(currentRow)
@@ -133,8 +130,6 @@ window.editTable=(index,tableDiv,config,data)=>{
                   newData[value.key] = input.value
               }
               else{
-                console.log(status)
-                console.log(input.value)
                   alert("Record already exists");
                   break;
               }
@@ -157,8 +152,6 @@ window.deleteRow =(index,data)=> {
   data.splice(index,1);//remove the row pointed by index
   return data;
   } 
-
-
 window.searchTable=()=> {//search a given input in the table  
       let input, filter, table, tr, td, i,j, txtValue;
       let index = [];
@@ -166,6 +159,9 @@ window.searchTable=()=> {//search a given input in the table
       filter = input.value.toString().toUpperCase();
         while(filter.endsWith(" ")){//removes white spaces at end of filter
           filter = filter.slice(0,filter.length-1)
+        }
+        while(filter.startsWith(" ")){//removes white spaces at start of filter
+          filter = filter.slice(1,filter.length)
         }
         table = document.getElementById("tableBody");
         tr = table.getElementsByTagName("tr");
@@ -187,12 +183,11 @@ window.searchTable=()=> {//search a given input in the table
         }
       }
       index.forEach((val)=>{tr[val].style.display = "";})
-      if((/^\s+$/).test(filter)){//no action for space bar, simply load the tables
-        loadTable();
-      } 
+      // if((/^\s+$/).test(filter)){//no action for space bar, simply load the tables
+      //   loadTable();
+      //   console.log("hi")
+      // } 
   }
-
-
 window.sortData=(type)=>{  //Sort each field in table by clicking on corresponding table heading
     let tableData = JSON.parse(localStorage.getItem(window.entity));
     let field = event.target.id 

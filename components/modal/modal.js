@@ -122,16 +122,4 @@ window.isUnique=(value,data,field)=>{//check if an entry is unique, value - inpu
     return status;
   }
   
-window.check=(myform)=>{//form validation
-    // var nameRegex = /^[a-zA-Z\s]+$/;
-    // var emailRegex = /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/;
-    // var contactRegex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
-    // myform.map((val)=>{  return (val== ""||val== null)})
-    if(myform.map((val)=>{ return (val == ""||val == null)}).every((val)=>{return val == true}) === true){
-      return false;
-    }
-    else{
-      return true;
-      }
-  }
 })

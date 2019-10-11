@@ -10,7 +10,6 @@ $(() => {
       let tableBody = document.createElement("tbody");
       tableBody.id = "tableBody"
       table.appendChild(tableHead);
-  
       //Table header
       let tr = document.createElement("tr");
       tableHead.appendChild(tr);
@@ -100,10 +99,6 @@ $(() => {
             break;
     } 
     }
-    // console.log(window.entity)
-    // if(localStorage.getItem(window.entity).length == 0){
-    //   document.getElementById(window.tableDiv).style.display = "none"
-    // }
     }
   
 window.editTable=(index,tableDiv,config,data)=>{
@@ -111,7 +106,6 @@ window.editTable=(index,tableDiv,config,data)=>{
   let newData = {}
   for(let [key,value] of Object.entries(config)){
       let input = document.getElementById(value.key)
-      // console.log(value.key)
       input.value = currentRow[value.key] //sets the input values to that of selected row
   }
   let submit = document.getElementById("submitButton");
@@ -146,7 +140,7 @@ window.editTable=(index,tableDiv,config,data)=>{
          }
         buffer.push(input.value)
     }
-    if(window.check(buffer) && status){
+    if(status){
       data[index]=newData;
       window.createTable(tableDiv, config, data)
     }
@@ -201,10 +195,8 @@ window.sortData=(type)=>{  //Sort each field in table by clicking on correspondi
     let field = event.target.id 
     let l = tableData.length;
     let table_head =  document.getElementById(field);
-    // console.log(table_head.lastElementChild)
     let data = []; 
     let index = [];  
-    // let f = field.toString(); 
     let sortedData = null;
     for(let i = 0;i<l;i++){
       data.push([tableData[i][field],i]);
@@ -226,8 +218,6 @@ window.sortData=(type)=>{  //Sort each field in table by clicking on correspondi
       }
      table_head.setAttribute("onclick",null);
      window.sortMode = "descending"
-    //  table_head.lastElementChild.setAttribute("class","glyphicon glyphicon-chevron-down");
-    // console.log(newData)
     }
     else if(type === 'descending'){
       for( i =0 ; i<l ; i++){
@@ -235,8 +225,6 @@ window.sortData=(type)=>{  //Sort each field in table by clicking on correspondi
       } 
       table_head.setAttribute("onclick",null);
       window.sortMode = "ascending"
-      // table_head.lastElementChild.setAttribute("class","glyphicon glyphicon-chevron-up");
-      // console.log(newData)
     }
 
     localStorage.setItem(window.entity,JSON.stringify(newData));

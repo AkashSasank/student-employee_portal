@@ -100,7 +100,6 @@ $(() => {
 } 
 window.editTable=(index,tableDiv,config,data)=>{
   let currentRow = data[index]
-  console.log(currentRow)
   let newData = {}
   for(let [key,value] of Object.entries(config)){
       let input = document.getElementById(value.key)
@@ -110,42 +109,57 @@ window.editTable=(index,tableDiv,config,data)=>{
   submit.onclick =()=>{
     let status =true;
     let filteredData = data.filter((val,i)=> i!== index )
-    console.log(filteredData)
     for(let [key,value] of Object.entries(config)){
-        let input = document.getElementById(value.key)
-        if(value.required){
-          if(input.value.length > 0){
-              newData[value.key] = input.value
+      let input = document.getElementById(value.key)
+      let inputText = input.value
+     if(value.required){
+      if(inputText.length > 0){
+          if(value.regex.test(inputText)){
+              newData[value.key] = inputText
           }
           else{
-              alert("Fill the mandatory fields")
+              alert("Enter a valid "+value.key)
               status = false;
-              break;
+          break;
           }
-          }
-          if(value.unique){
-              status = window.isUnique(input.value,filteredData,value.key)
-              
-              if(status){
-                  newData[value.key] = input.value
+          
+      }
+      else{
+          alert("Fill the mandatory fields")
+          status = false;
+          break;
+      }
+      }
+      if(value.unique && inputText.length > 0){
+          status = window.isUnique(inputText,filteredData,value.key)
+          if(status){
+              if(value.regex.test(inputText)){
+                  newData[value.key] = inputText
               }
               else{
-                  alert("Record already exists");
-                  break;
+                  alert("Enter a valid "+value.key)
+                  status = false;
+              break;
               }
-         }
-         else{
-          newData[value.key] = input.value
-         }
+          }
+          else{
+              alert("Record already exists");
+              break;
+          }
+     }
+     else{
+      newData[value.key] = inputText
+     }
     }
     if(status){
       data[index]=newData;
       window.createTable(tableDiv, config, data)
+      submit.setAttribute("onclick",null);
+      submit.setAttribute("onclick", 'window.readForm()');
+      window.resetForm();
+      return true;//checks if edit is complete
     }
-    submit.setAttribute("onclick",null);
-    submit.setAttribute("onclick", 'window.readForm()');
-    window.resetForm();
-    return true;//checks if edit is complete
+    
   }
   } 
 window.deleteRow =(index,data)=> {

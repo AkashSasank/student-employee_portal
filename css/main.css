@@ -175,4 +175,5 @@ padding-top: 5%;
   justify-content: center;
   height: 300px;
   overflow: auto;
+  border-radius: 20px;
 }

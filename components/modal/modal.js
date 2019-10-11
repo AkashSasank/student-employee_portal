@@ -113,9 +113,9 @@ window.resetForm = ()=>{
 window.isUnique=(value,data,field)=>{//check if an entry is unique, value - input, data - the entire table data, field - the input field
     let status =  true;
     data.forEach(val => {
-        console.log(val[field])
-        console.log(value)
-      if(val[field] === value){
+        // console.log(val[field])
+        // console.log(value)
+      if(val[field] === value && val[field].length>0){
        status = status && false;
       }
     });

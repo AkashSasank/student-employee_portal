@@ -103,6 +103,7 @@ $(() => {
   
 window.editTable=(index,tableDiv,config,data)=>{
   let currentRow = data[index]
+  console.log(currentRow)
   let newData = {}
   for(let [key,value] of Object.entries(config)){
       let input = document.getElementById(value.key)
@@ -110,9 +111,9 @@ window.editTable=(index,tableDiv,config,data)=>{
   }
   let submit = document.getElementById("submitButton");
   submit.onclick =()=>{
-    let buffer = []
     let status =true;
     let filteredData = data.filter((val,i)=> i!== index )
+    console.log(filteredData)
     for(let [key,value] of Object.entries(config)){
         let input = document.getElementById(value.key)
         if(value.required){
@@ -127,10 +128,13 @@ window.editTable=(index,tableDiv,config,data)=>{
           }
           if(value.unique){
               status = window.isUnique(input.value,filteredData,value.key)
+              
               if(status){
                   newData[value.key] = input.value
               }
               else{
+                console.log(status)
+                console.log(input.value)
                   alert("Record already exists");
                   break;
               }
@@ -138,7 +142,6 @@ window.editTable=(index,tableDiv,config,data)=>{
          else{
           newData[value.key] = input.value
          }
-        buffer.push(input.value)
     }
     if(status){
       data[index]=newData;
